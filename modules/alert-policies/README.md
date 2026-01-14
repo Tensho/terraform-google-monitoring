@@ -34,7 +34,5 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_policies"></a> [policies](#output\_policies) | All alert policies. |
-| <a name="output_policy_ids"></a> [policy\_ids](#output\_policy\_ids) | Map of policy keys to their IDs. |
-| <a name="output_policy_names"></a> [policy\_names](#output\_policy\_names) | Map of policy keys to their resource names. |
+| <a name="output_policy_ids"></a> [policy\_ids](#output\_policy\_ids) | Policy IDs |
 <!-- END_TF_DOCS -->
