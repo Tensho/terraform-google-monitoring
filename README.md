@@ -1,6 +1,6 @@
 # Google Cloud Monitoring Terraform Module
 
-Terraform module to manage [Google Cloud Monitoring]() resources (batteries included).
+Terraform module to manage [Google Cloud Monitoring](https://cloud.google.com/monitoring) resources (batteries included).
 
 ## Usage
 
