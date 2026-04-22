@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/Tensho/terraform-google-monitoring/compare/v1.0.1...v1.1.0) (2026-04-22)
+
+
+### Features
+
+* **notification-channels:** add sub-module ([388872f](https://github.com/Tensho/terraform-google-monitoring/commit/388872f9ad79d28c0cdad544f5e1e7d7bba27a63))
+
 ## [1.0.1](https://github.com/Tensho/terraform-google-monitoring/compare/v1.0.0...v1.0.1) (2026-01-14)
 
 
