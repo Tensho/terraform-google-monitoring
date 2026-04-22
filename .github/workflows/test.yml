@@ -50,3 +50,7 @@ jobs:
       - name: Test alert policies
         run: terraform init && terraform test
         working-directory: ./modules/alert-policies
+
+      - name: Test notification channels
+        run: terraform init && terraform test
+        working-directory: ./modules/notification-channels

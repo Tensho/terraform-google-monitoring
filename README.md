@@ -96,7 +96,7 @@ Check out comprehensive examples in [`examples`](./examples) folder.
   * [ ] MQL
   * [ ] PromQL
   * [ ] SQL
-* [ ] [Google Cloud Monitoring notification channels](https://docs.cloud.google.com/monitoring/support/notification-options)
+* [x] [Google Cloud Monitoring notification channels](https://docs.cloud.google.com/monitoring/support/notification-options)
 * [ ] [Google Cloud Monitoring dashboards](https://docs.cloud.google.com/monitoring/dashboards)
 
 ## Requirements
