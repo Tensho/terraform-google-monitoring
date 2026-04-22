@@ -5,7 +5,9 @@ on:
     branches:
       - '**'
     paths-ignore:
+      - '.gitignore'
       - '**.md'
+      - '.github/**'
 
 permissions:
   contents: read
