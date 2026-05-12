@@ -58,3 +58,7 @@ terraform-docs markdown table modules/<module-name>
 - Releases managed by release-please (`.github/workflows/release.yml`)
 - Resource instances keyed as `google_monitoring_<type>.default` with `for_each`
 - Output pattern: `<type>_ids` map keyed by the input map keys
+
+## Testing
+
+- Extend [`.github/workflows/test.yml`](.github/workflows/test.yml) GHA workflow with new tests for new modules

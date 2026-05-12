@@ -56,3 +56,7 @@ jobs:
       - name: Test notification channels
         run: terraform init && terraform test
         working-directory: ./modules/notification-channels
+
+      - name: Test dashboards
+        run: terraform init && terraform test
+        working-directory: ./modules/dashboards
