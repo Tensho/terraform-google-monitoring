@@ -1,0 +1,14 @@
+{
+  "displayName": "Example From File",
+  "gridLayout": {
+    "widgets": [
+      {
+        "title": "Runbook",
+        "text": {
+          "content": "Example dashboard loaded from a JSON file.",
+          "format": "MARKDOWN"
+        }
+      }
+    ]
+  }
+}
