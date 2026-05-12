@@ -7,7 +7,7 @@ Terraform module to manage [Google Cloud Monitoring](https://cloud.google.com/mo
 ```hcl
 module "example" {
   source  = "Tensho/monitoring/google//modules/alert-policies"
-  version = "1.1.0"
+  version = "1.2.0"
 
   policies = {
     "alice" = {
@@ -98,6 +98,7 @@ Check out comprehensive examples in [`examples`](./examples) folder.
   * [ ] SQL
 * [x] [Google Cloud Monitoring notification channels](https://docs.cloud.google.com/monitoring/support/notification-options)
 * [x] [Google Cloud Monitoring dashboards](https://docs.cloud.google.com/monitoring/dashboards)
+* [ ] [Google Cloud Monitoring log-based metrics](https://docs.cloud.google.com/logging/docs/logs-based-metrics)
 
 ## Requirements
 
