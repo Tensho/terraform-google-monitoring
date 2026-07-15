@@ -43,6 +43,16 @@ variable "policies" {
         }))
       }))
 
+      condition_prometheus_query_language = optional(object({
+        query                     = string
+        duration                  = optional(string)
+        evaluation_interval       = optional(string)
+        labels                    = optional(map(string))
+        rule_group                = optional(string)
+        alert_rule                = optional(string)
+        disable_metric_validation = optional(bool)
+      }))
+
       condition_absent = optional(object({
         filter   = optional(string)
         duration = string

@@ -86,6 +86,20 @@ resource "google_monitoring_alert_policy" "default" {
         }
       }
 
+      dynamic "condition_prometheus_query_language" {
+        for_each = conditions.value.condition_prometheus_query_language != null ? [conditions.value.condition_prometheus_query_language] : []
+
+        content {
+          query                     = condition_prometheus_query_language.value.query
+          duration                  = condition_prometheus_query_language.value.duration
+          evaluation_interval       = condition_prometheus_query_language.value.evaluation_interval
+          labels                    = condition_prometheus_query_language.value.labels
+          rule_group                = condition_prometheus_query_language.value.rule_group
+          alert_rule                = condition_prometheus_query_language.value.alert_rule
+          disable_metric_validation = condition_prometheus_query_language.value.disable_metric_validation
+        }
+      }
+
       dynamic "condition_absent" {
         for_each = conditions.value.condition_absent != null ? [conditions.value.condition_absent] : []
 

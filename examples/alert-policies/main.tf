@@ -73,6 +73,49 @@ module "example" {
         team        = "platform"
       }
     }
+    "example-prometheus-condition" = {
+      display_name = "Example Prometheus Condition"
+
+      conditions = [
+        {
+          display_name = "Container restarts above 5 in 10 minutes"
+
+          condition_prometheus_query_language = {
+            query = <<-QUERY
+              increase(kubernetes_io:container_restart_count{monitored_resource="k8s_container"}[10m]) > 5
+            QUERY
+
+            duration            = "300s"
+            evaluation_interval = "60s"
+
+            labels = {
+              severity = "warning"
+            }
+
+            rule_group = "container-health"
+            alert_rule = "ContainerRestarts"
+          }
+        }
+      ]
+
+      documentation = {
+        content = <<-STR
+          Example alert policy managed by Terraform.
+
+          Container restart count has exceeded 5 within 10 minutes.
+
+          This alert monitors Kubernetes container restarts via PromQL and triggers
+          when the restart count grows faster than expected.
+        STR
+      }
+
+      severity = "WARNING"
+
+      user_labels = {
+        environment = "example"
+        team        = "platform"
+      }
+    }
     "example-absent-condition" = {
       display_name = "Example Absent Condition"
 

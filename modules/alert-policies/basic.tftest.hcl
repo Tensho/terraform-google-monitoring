@@ -72,6 +72,49 @@ run "basic" {
           team        = "platform"
         }
       }
+      "test-prometheus-condition" = {
+        display_name = "Test Prometheus Condition"
+
+        conditions = [
+          {
+            display_name = "Container restarts above 5 in 10 minutes"
+
+            condition_prometheus_query_language = {
+              query = <<-QUERY
+                increase(kubernetes_io:container_restart_count{monitored_resource="k8s_container"}[10m]) > 5
+              QUERY
+
+              duration            = "300s"
+              evaluation_interval = "60s"
+
+              labels = {
+                severity = "warning"
+              }
+
+              rule_group = "container-health"
+              alert_rule = "ContainerRestarts"
+            }
+          }
+        ]
+
+        documentation = {
+          content = <<-STR
+            Example alert policy managed by Terraform.
+
+            Container restart count has exceeded 5 within 10 minutes.
+
+            This alert monitors Kubernetes container restarts via PromQL and triggers
+            when the restart count grows faster than expected.
+          STR
+        }
+
+        severity = "WARNING"
+
+        user_labels = {
+          environment = "test"
+          team        = "platform"
+        }
+      }
       "test-absent-condition" = {
         display_name = "Test Absent Condition"
 
@@ -123,6 +166,11 @@ run "basic" {
   assert {
     condition     = length(google_monitoring_alert_policy.default["test-threshold-condition"]) > 0
     error_message = "Alert policy 'test-threshold-condition' has not been created"
+  }
+
+  assert {
+    condition     = length(google_monitoring_alert_policy.default["test-prometheus-condition"]) > 0
+    error_message = "Alert policy 'test-prometheus-condition' has not been created"
   }
 
   assert {
