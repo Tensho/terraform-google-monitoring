@@ -7,7 +7,7 @@ Terraform module to manage [Google Cloud Monitoring](https://cloud.google.com/mo
 ```hcl
 module "example" {
   source  = "Tensho/monitoring/google//modules/alert-policies"
-  version = "1.2.0"
+  version = "1.2.1"
 
   policies = {
     "alice" = {
@@ -81,6 +81,26 @@ module "example" {
         team        = "platform"
       }
     }
+    "bob" = {
+      display_name = "Bob"
+
+      conditions = [
+        {
+          display_name = "Container restarts above 5 in 10 minutes"
+
+          condition_prometheus_query_language = {
+            query = <<-QUERY
+              increase(kubernetes_io:container_restart_count{monitored_resource="k8s_container"}[10m]) > 5
+            QUERY
+
+            duration            = "300s"
+            evaluation_interval = "60s"
+          }
+        }
+      ]
+
+      severity = "CRITICAL"
+    }
   }
 }
 ```
@@ -94,7 +114,7 @@ Check out comprehensive examples in [`examples`](./examples) folder.
   * [x] Absent
   * [ ] Matched Log
   * [ ] MQL
-  * [ ] PromQL
+  * [x] PromQL
   * [ ] SQL
 * [x] [Google Cloud Monitoring notification channels](https://docs.cloud.google.com/monitoring/support/notification-options)
 * [x] [Google Cloud Monitoring dashboards](https://docs.cloud.google.com/monitoring/dashboards)
