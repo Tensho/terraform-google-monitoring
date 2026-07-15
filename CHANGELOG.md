@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/Tensho/terraform-google-monitoring/compare/v1.2.0...v1.2.1) (2026-07-15)
+
+
+### Bug Fixes
+
+* **alert/policies:** add promql conditions ([0f7fc89](https://github.com/Tensho/terraform-google-monitoring/commit/0f7fc89d143b51e8dee82adbbfeda0e3348e8f38))
+
 ## [1.2.0](https://github.com/Tensho/terraform-google-monitoring/compare/v1.1.0...v1.2.0) (2026-05-12)
 
 
