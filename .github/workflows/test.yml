@@ -60,3 +60,7 @@ jobs:
       - name: Test dashboards
         run: terraform init && terraform test
         working-directory: ./modules/dashboards
+
+      - name: Test log metrics
+        run: terraform init && terraform test
+        working-directory: ./modules/log-metrics

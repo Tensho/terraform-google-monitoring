@@ -1,0 +1,7 @@
+formatter: "markdown table"
+
+settings:
+  # Read the provider version from the required_providers constraint
+  # (e.g. ~> 3.0) instead of the resolved version in .terraform.lock.hcl,
+  # which is gitignored and would otherwise churn the docs on every run.
+  lockfile: false

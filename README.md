@@ -118,17 +118,18 @@ Check out comprehensive examples in [`examples`](./examples) folder.
   * [ ] SQL
 * [x] [Google Cloud Monitoring notification channels](https://docs.cloud.google.com/monitoring/support/notification-options)
 * [x] [Google Cloud Monitoring dashboards](https://docs.cloud.google.com/monitoring/dashboards)
-* [ ] [Google Cloud Monitoring log-based metrics](https://docs.cloud.google.com/logging/docs/logs-based-metrics)
+* [x] [Google Cloud Monitoring log-based metrics](https://docs.cloud.google.com/logging/docs/logs-based-metrics)
 
 ## Requirements
 
 A project with the following APIs enabled must be used to host the resources of this module:
 
-* Cloud Monitoring API `monitoring.googleapis.com`                 
+* Cloud Monitoring API `monitoring.googleapis.com`
+* Cloud Logging API `logging.googleapis.com` (log-based metrics)
 
 The [Project Factory module](https://registry.terraform.io/modules/terraform-google-modules/project-factory/google) can
 be used to provision a project with the necessary APIs enabled. Alternatively, the APIs can be enabled via CLI:
 
 ```shell
-gcloud services monitoring.googleapis.com
+gcloud services enable monitoring.googleapis.com logging.googleapis.com
 ```
