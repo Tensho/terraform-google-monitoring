@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/Tensho/terraform-google-monitoring/compare/v1.2.1...v1.3.0) (2026-07-24)
+
+
+### Features
+
+* **log-metrics:** add sub-module ([1ce7ac4](https://github.com/Tensho/terraform-google-monitoring/commit/1ce7ac49eb2bbd75b8153dcbd956e35c9234e882))
+
 ## [1.2.1](https://github.com/Tensho/terraform-google-monitoring/compare/v1.2.0...v1.2.1) (2026-07-15)
 
 
