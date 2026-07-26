@@ -13,6 +13,7 @@ permissions:
   contents: read
 
 env:
+  # Terraform Google provider configuration
   GOOGLE_PROJECT: ${{ vars.GOOGLE_PROJECT }}
   GOOGLE_REGION: ${{ vars.GOOGLE_REGION }}
 
@@ -35,6 +36,14 @@ jobs:
     permissions:
       # NOTE: GitHub Actions doesn't allow step-level permissions
       id-token: write # google-github-actions/auth
+    strategy:
+      fail-fast: false
+      matrix:
+        module:
+          - alert-policies
+          - notification-channels
+          - dashboards
+          - log-metrics
     env:
       TF_INPUT: false
     steps:
@@ -44,23 +53,12 @@ jobs:
         with:
           terraform_version: "1.7.0"
 
+      # Terraform Google provider authentication
       - uses: google-github-actions/auth@v3
         with:
           project_id: ${{ vars.GCP_PROJECT_ID }}
           workload_identity_provider: projects/${{ vars.GCP_PROJECT_NUMBER }}/locations/global/workloadIdentityPools/github-oidc/providers/github-oidc
 
-      - name: Test alert policies
+      - name: Test ${{ matrix.module }}
         run: terraform init && terraform test
-        working-directory: ./modules/alert-policies
-
-      - name: Test notification channels
-        run: terraform init && terraform test
-        working-directory: ./modules/notification-channels
-
-      - name: Test dashboards
-        run: terraform init && terraform test
-        working-directory: ./modules/dashboards
-
-      - name: Test log metrics
-        run: terraform init && terraform test
-        working-directory: ./modules/log-metrics
+        working-directory: ./modules/${{ matrix.module }}
