@@ -10,7 +10,7 @@ run "basic" {
 
         label_extractors = {
           "mass" = "EXTRACT(jsonPayload.request)"
-          "sku"  = "REGEXP_EXTRACT(jsonPayload.id, \"id:(\\d+)\")"
+          "sku"  = "REGEXP_EXTRACT(jsonPayload.id, \"id:(\\\\d+)\")"
         }
 
         metric_descriptor = {
