@@ -112,7 +112,7 @@ Check out comprehensive examples in [`examples`](./examples) folder.
 * [ ] [Google Cloud Monitoring alert policies](https://docs.cloud.google.com/monitoring/alerts)
   * [x] Threshold
   * [x] Absent
-  * [ ] Matched Log
+  * [x] Matched Log
   * [ ] MQL
   * [x] PromQL
   * [ ] SQL
