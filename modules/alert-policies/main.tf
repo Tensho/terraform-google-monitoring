@@ -9,6 +9,23 @@ resource "google_monitoring_alert_policy" "default" {
 
   notification_channels = each.value.notification_channels
 
+  dynamic "alert_strategy" {
+    for_each = each.value.alert_strategy != null ? [each.value.alert_strategy] : []
+
+    content {
+      auto_close           = alert_strategy.value.auto_close
+      notification_prompts = alert_strategy.value.notification_prompts
+
+      dynamic "notification_rate_limit" {
+        for_each = alert_strategy.value.notification_rate_limit != null ? [alert_strategy.value.notification_rate_limit] : []
+
+        content {
+          period = notification_rate_limit.value.period
+        }
+      }
+    }
+  }
+
   dynamic "documentation" {
     for_each = each.value.documentation != null ? [each.value.documentation] : []
 
@@ -126,6 +143,15 @@ resource "google_monitoring_alert_policy" "default" {
               percent = trigger.value.percent
             }
           }
+        }
+      }
+
+      dynamic "condition_matched_log" {
+        for_each = conditions.value.condition_matched_log != null ? [conditions.value.condition_matched_log] : []
+
+        content {
+          filter           = condition_matched_log.value.filter
+          label_extractors = condition_matched_log.value.label_extractors
         }
       }
     }
