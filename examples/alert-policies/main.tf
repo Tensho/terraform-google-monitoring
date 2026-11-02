@@ -161,5 +161,49 @@ module "example" {
         team        = "platform"
       }
     }
+    "example-matched-log-condition" = {
+      display_name = "Example Matched Log Condition"
+
+      conditions = [
+        {
+          display_name = "Error log entry"
+
+          condition_matched_log = {
+            filter = <<-QUERY
+              resource.type="gce_instance"
+              severity>=ERROR
+            QUERY
+
+            label_extractors = {
+              instance_id = "EXTRACT(resource.labels.instance_id)"
+            }
+          }
+        }
+      ]
+
+      alert_strategy = {
+        auto_close           = "604800s"
+        notification_prompts = ["OPENED"]
+
+        notification_rate_limit = {
+          period = "3600s"
+        }
+      }
+
+      documentation = {
+        content = <<-STR
+          Example alert policy managed by Terraform.
+
+          GCE instance has logged an error.
+        STR
+      }
+
+      severity = "ERROR"
+
+      user_labels = {
+        environment = "example"
+        team        = "platform"
+      }
+    }
   }
 }

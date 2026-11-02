@@ -160,6 +160,50 @@ run "basic" {
           team        = "platform"
         }
       }
+      "test-matched-log-condition" = {
+        display_name = "Test Matched Log Condition"
+
+        conditions = [
+          {
+            display_name = "Error log entry"
+
+            condition_matched_log = {
+              filter = <<-QUERY
+                resource.type="gce_instance"
+                severity>=ERROR
+              QUERY
+
+              label_extractors = {
+                instance_id = "EXTRACT(resource.labels.instance_id)"
+              }
+            }
+          }
+        ]
+
+        alert_strategy = {
+          auto_close           = "604800s"
+          notification_prompts = ["OPENED"]
+
+          notification_rate_limit = {
+            period = "3600s"
+          }
+        }
+
+        documentation = {
+          content = <<-STR
+            Example alert policy managed by Terraform.
+
+            GCE instance has logged an error.
+          STR
+        }
+
+        severity = "ERROR"
+
+        user_labels = {
+          environment = "test"
+          team        = "platform"
+        }
+      }
     }
   }
 
@@ -176,6 +220,11 @@ run "basic" {
   assert {
     condition     = length(google_monitoring_alert_policy.default["test-absent-condition"]) > 0
     error_message = "Alert policy 'test-absent-condition' has not been created"
+  }
+
+  assert {
+    condition     = length(google_monitoring_alert_policy.default["test-matched-log-condition"]) > 0
+    error_message = "Alert policy 'test-matched-log-condition' has not been created"
   }
 }
 

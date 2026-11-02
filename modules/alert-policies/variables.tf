@@ -69,6 +69,20 @@ variable "policies" {
           percent = optional(number)
         }))
       }))
+
+      condition_matched_log = optional(object({
+        filter           = string
+        label_extractors = optional(map(string))
+      }))
+    }))
+
+    alert_strategy = optional(object({
+      auto_close           = optional(string)
+      notification_prompts = optional(list(string)) # OPENED, CLOSED
+
+      notification_rate_limit = optional(object({
+        period = optional(string)
+      }))
     }))
 
     documentation = optional(object({
