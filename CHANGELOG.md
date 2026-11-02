@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/Tensho/terraform-google-monitoring/compare/v1.3.0...v1.4.0) (2026-11-02)
+
+
+### Features
+
+* **alert-policies:** add matched log conditions and alert strategy ([#7](https://github.com/Tensho/terraform-google-monitoring/issues/7)) ([37a927b](https://github.com/Tensho/terraform-google-monitoring/commit/37a927b597ab131005f6b5ff5c775447eff1aaf5))
+
 ## [1.3.0](https://github.com/Tensho/terraform-google-monitoring/compare/v1.2.1...v1.3.0) (2026-07-24)
 
 

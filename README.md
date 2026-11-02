@@ -7,7 +7,7 @@ Terraform module to manage [Google Cloud Monitoring](https://cloud.google.com/mo
 ```hcl
 module "example" {
   source  = "Tensho/monitoring/google//modules/alert-policies"
-  version = "~> 1.3"
+  version = "~> 1.4"
 
   policies = {
     "alice" = {
